@@ -1,0 +1,15 @@
+@import 'styles/shared.scss';
+
+.FormSelect {
+	all: unset;
+	display: inline-flex;
+	padding: 0.65em 1em;
+	// width: 100%;
+	background-color: $grey-95;
+	border: 1px solid $black;
+	color: grey;
+
+	&:valid {
+		color: $black;
+	}
+}

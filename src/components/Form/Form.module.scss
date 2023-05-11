@@ -1,0 +1,15 @@
+@import 'styles/shared.scss';
+
+.Form {
+	width: 100%;
+
+	h4 {
+		text-transform: uppercase;
+		font-weight: var(--fontWeight-bd);
+		margin-bottom: 15px;
+	}
+
+	[data-component='Button'] {
+		margin-top: 44px;
+	}
+}

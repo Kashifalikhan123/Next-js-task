@@ -1,0 +1,251 @@
+:root {
+  /* Colors */
+  --black: #000;
+  --white: #fff;
+
+  --blue: #346fe6;
+  --blue-dark: #2d61cb;
+  --lightBlue: #e6f3fe;
+  --lightBlue-medium: #dceffe;
+  --lightBlue-dark: #cde8fe;
+
+  --green: #2fac8d;
+  --green-dark: #2b9d81;
+  --lightGreen: #dff6ed;
+  --lightGreen-medium: #d3f3e6;
+  --lightGreen-dark: #c7efe0;
+
+  --yellow: #ffdd99;
+  --yellow-dark: #ffd88a;
+  --lightYellow: #fff2d6;
+  --lightYellow-medium: #ffecc7;
+  --lightYellow-dark: #ffe6b3;
+
+  --red: #e33b3b;
+  --red-medium: #f9d2d2;
+  --red-soft: #fbe4e4;
+
+  --grey: #f9fafc;
+  --grey-medium: #dbe3f1;
+  --grey-dark: #74788d;
+  --border-light: #efefef;
+
+  --graph-blue: var(--lightBlue);
+  --graph-green: var(--lightGreen);
+  --graph-yellow: var(--lightYellow);
+  --graph-grey: var(--lightGrey);
+
+  /* Colors not in styleguide */
+  --status-green: #cae0f1;
+  --lightGrey: #f7f8fa;
+  --grey-very-light: #fafafa;
+  --text-grey: #4f5460;
+  --text-light-grey: #9faac2;
+
+  /* Font sizes */
+  --text-sm: calc(11px * 1.14);
+  --text-md: calc(12px * 1.14);
+  --text-lg: calc(13px * 1.14);
+
+  --headline-sm: calc(15px * 1.4);
+  --headline-md: calc(18px * 1.4);
+  --headline-lg: calc(22px * 1.4);
+
+  /* Font weights */
+  --fontWeight-rg: 400;
+  --fontWeight-md: 500;
+  --fontWeight-bd: 700;
+
+  /* Spacing */
+  --space: 16px;
+  --space-lg: 32px;
+  --space-xl: 40px;
+
+  /* Element sizes */
+  --sidebar-width: 250px;
+  --topbar-height: 80px;
+}
+
+@import url('//hello.myfonts.net/count/3b1dc2');
+
+@font-face {
+  font-family: 'CeraPro';
+  font-weight: 400;
+  src: url('./fonts/3B1DC2_8_0.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'CeraPro';
+  font-weight: 500;
+  src: url('./fonts/3B1DC2_6_0.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'CeraPro';
+  font-weight: 600;
+  src: url('./fonts/3B1DC2_1_0.woff2') format('woff2');
+}
+
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+html,
+body {
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+
+html {
+  background-color: var(--white);
+  box-sizing: border-box;
+  color: var(--black);
+  font-family: 'CeraPro', sans-serif;
+  font-style: normal;
+  font-weight: var(--fontWeight-rg);
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 0;
+}
+
+[tabindex],
+a,
+button,
+input,
+label,
+select,
+textarea {
+  -ms-touch-action: manipulation;
+  touch-action: manipulation;
+}
+
+a {
+  color: currentColor;
+  outline: none;
+  text-decoration: none;
+  text-decoration-skip-ink: auto;
+}
+
+a * {
+  pointer-events: none;
+}
+
+svg {
+  fill: currentColor;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  font-size: 100%;
+  font-weight: var(--fontWeight-rg);
+  line-height: inherit;
+  margin: 0;
+}
+
+ol,
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+dl {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+dd {
+  margin-left: 0;
+}
+
+img {
+  display: inline-flex;
+  max-width: 100%;
+  height: auto;
+}
+
+blockquote,
+figure {
+  margin: 0;
+}
+
+cite {
+  font-style: normal;
+}
+
+button,
+input,
+select,
+textarea {
+  font-family: inherit;
+  font-size: 100%;
+  font-weight: inherit;
+  line-height: 1.15;
+  margin: 0;
+}
+
+button,
+input[type='reset'] {
+  background-color: transparent;
+  border: none;
+  color: currentColor;
+  cursor: pointer;
+  padding: 0;
+  outline: none;
+  user-select: none;
+}
+
+button {
+  cursor: pointer;
+}
+
+button[disabled] {
+  cursor: default;
+}
+
+a *,
+button * {
+  pointer-events: none;
+}
+
+input[type='search']::-webkit-search-decoration,
+input[type='search']::-webkit-search-cancel-button,
+input[type='search']::-webkit-search-results-button,
+input[type='search']::-webkit-search-results-decoration {
+  -webkit-appearance: none;
+}
+
+input[type='search'] {
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+fieldset {
+  border: none;
+  margin: 0;
+  padding: 0;
+}
+
+legend {
+  margin: 0;
+  padding: 0;
+}
+
+label {
+  cursor: pointer;
+}

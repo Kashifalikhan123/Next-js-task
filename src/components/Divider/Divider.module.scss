@@ -1,0 +1,53 @@
+@import 'styles/shared.scss';
+
+.Divider {
+	position: relative;
+	width: 100%;
+	border-top: 1px solid #000;
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-end;
+	height: 4em;
+	@include fontSize(var(--text-sm));
+	line-height: 1.5em;
+	font-weight: var(--fontWeight-md);
+	text-transform: uppercase;
+	margin: 10vh 0;
+	letter-spacing: 0.75px;
+	font-weight: var(--fontWeight-bk);
+
+	.title {
+		display: flex;
+		align-items: center;
+
+		.arrow {
+			font-size: 1.2em;
+			margin-left: 1.3em;
+			transform: rotate(-45deg);
+		}
+	}
+
+	.footer {
+		display: flex;
+		align-items: center;
+		svg {
+			height: 1em;
+			width: 1em;
+			margin: 0 2.3em 0 2.1em;
+			opacity: 0.85;
+		}
+	}
+
+	@include breakpoint(small) {
+		.footer {
+			span,
+			svg {
+				display: none;
+			}
+
+			span:nth-child(1) {
+				display: initial;
+			}
+		}
+	}
+}

@@ -1,0 +1,25 @@
+// $primary: hsl(120, 100%, 49%);
+$primary: #14e450;
+$primary-dark: darken($primary, 5%);
+$secondary-yellow: #fff000;
+$secondary-pink: #e63c6e;
+$secondary-red: #dc1400;
+$secondary-blue: #0abeff;
+$white: #fff;
+$darkgrey: #333333;
+$grey: #4d4d4d;
+$light-grey: #5a5a5a;
+$black: #000;
+$jet-black: #0d0d0d;
+$light-black: #262626;
+
+// $accessible-grey: #757575;
+$accessible-grey: #575757;
+$grey-60: darken($white, 40%);
+$grey-65: darken($white, 35%);
+$grey-70: darken($white, 30%);
+$grey-75: darken($white, 25%);
+$grey-80: darken($white, 20%);
+$grey-85: darken($white, 15%);
+$grey-90: darken($white, 10%);
+$grey-95: darken($white, 5%);

@@ -1,0 +1,74 @@
+:root {
+	/* Font sizes */
+	/*--text-sm: ??; */
+	--text-sm: 13px;
+	--text-mdsm: 14px;
+	--text-md: 15px;
+	--text-lg: 20px;
+	/*--text-lg: ??; */
+	--text-button: 13px;
+
+	--headline-tn: 1.33333rem;
+	--headline-sm: 2rem;
+	--headline-smMd: 2.5rem;
+	--headline-md: 3.3rem;
+	--headline-mdlg: 4rem;
+	--headline-lg: 4.6rem;
+	--headline-msv: 5.25rem;
+
+	/* Font weights */
+	--fontWeight-rg: 300;
+	--fontWeight-md: 400;
+	--fontWeight-bk: 500;
+	--fontWeight-bd: 600;
+	--fontWeight-blk: 700;
+
+	/* Spacing */
+	--space-xs: 4px;
+	--space-sm: 8px;
+	--space-rg: 13px;
+	// --space-rg: 16px;
+	--space-md: 24px;
+	--space-lg: 32px;
+	--space-xl: 40px;
+	--space-xxl: 56px;
+
+	/* Border radius */
+	--border-radius-sm: 2px;
+	--border-radius-md: 3px;
+	--border-radius-lg: 4px;
+	--border-radius-circle: 50%;
+	--border-radius-pill: 9999px;
+
+	/* Transition */
+	--transition-slow: 500ms;
+	--transition-medium: 250ms;
+	--transition-fast: 150ms;
+
+	/* Element sizes */
+	// --site-width: 1200px;
+	--topbar-height: 92px;
+
+	// --site-width: #{getCol($desktopCols, $desktopCols, -2, 2)};
+	// --site-width: min(#{getCol($desktopCols, $desktopCols, 0, 0, #{$desktopMargin * 2})}, 1440px);
+	--site-width: min(#{getCol($desktopCols, $desktopCols, 0, 0, #{$desktopMargin * 2})}, 1602px);
+
+	@include breakpoint(small) {
+		--site-width: calc(100% - #{$desktopPadding * 2});
+		--topbar-height: 62px;
+	}
+
+	@include breakpoint(tiny) {
+		--text-md: 13px;
+		--text-lg: 15px;
+		--site-width: calc(100% - #{$mobilePadding * 2});
+
+		--headline-sm: 1.33333rem;
+		--headline-smMd: 1.7rem;
+		--headline-md: 1.9rem;
+		--headline-mdlg: 1.65rem;
+		// --headline-lg: 2.4rem;
+		--headline-lg: 1.66667rem;
+		--headline-msv: 1.7rem;
+	}
+}

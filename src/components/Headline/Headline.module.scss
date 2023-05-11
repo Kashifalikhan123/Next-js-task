@@ -1,0 +1,52 @@
+@import 'styles/shared.scss';
+
+.leftAlign {
+	text-align: left;
+}
+
+.centerAlign {
+	text-align: center;
+}
+
+.smallWeight {
+	font-weight: var(--fontWeight-bd);
+}
+
+.mediumWeight {
+	font-weight: var(--fontWeight-md);
+}
+
+.largeWeight {
+	font-weight: var(--fontWeight-bd);
+}
+
+.smallSize {
+	@include fontSize(var(--headline-sm));
+	line-height: var(--lineheight-headline-sm);
+	letter-spacing: -0.01px;
+}
+
+.mediumSize {
+	@include fontSize(var(--headline-md));
+	line-height: var(--lineheight-headline-md);
+}
+
+.largeSize {
+	@include fontSize(var(--headline-lg));
+	line-height: var(--lineheight-headline-lg);
+}
+
+.headline {
+	white-space: pre-wrap;
+	text-transform: uppercase;
+	letter-spacing: -0.01px;
+	z-index: 1;
+}
+
+// > h1 {
+//   max-width: var(--site-width);
+//   @include fontSize(2.75em);
+//   text-transform: uppercase;
+//   position: relative;
+//   z-index: 2;
+// }

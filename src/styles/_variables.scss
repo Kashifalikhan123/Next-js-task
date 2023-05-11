@@ -1,0 +1,84 @@
+:root {
+	/* Font sizes */
+
+	--text-sm: 13px;
+	--text-md: 15px;
+	--text-lg: 20px;
+
+	--text-button: 13px;
+
+	--headline-lg: 70px;
+	--headline-md: 60px;
+	--headline-sm: 30px;
+	--headline-tn: 20px;
+
+	--bullet: 15px;
+	--label: 15px;
+	--breadcrumb: 13px;
+
+	// Line Heights
+	--lineheight-headline-lg: 70px;
+	--lineheight-headline-md: 70px;
+	--lineheight-headline-sm: 35px;
+	--lineheight-paragraph: 23px;
+	--lineheight-bullet: 23px;
+	--lineheight-label: 23px;
+	--lineheight-breadcrumb: 13px;
+
+	/* Font weights */
+	--fontWeight-rg: 300;
+	--fontWeight-bk: 400;
+	--fontWeight-md: 500;
+	--fontWeight-bd: 600;
+	--fontWeight-blk: 700;
+
+	/* Spacing */
+	--space-xs: 4px;
+	--space-sm: 8px;
+	--space-rg: 13px;
+	// --space-rg: 16px;
+	--space-md: 24px;
+	--space-lg: 32px;
+	--space-xl: 40px;
+	--space-xxl: 56px;
+
+	/* Border radius */
+	--border-radius-sm: 2px;
+	--border-radius-md: 3px;
+	--border-radius-lg: 4px;
+	--border-radius-circle: 50%;
+	--border-radius-pill: 9999px;
+
+	/* Transition */
+	--transition-slow: 500ms;
+	--transition-medium: 250ms;
+	--transition-fast: 150ms;
+
+	/* Element sizes */
+	// --site-width: 1200px;
+	--topbar-height: 92px;
+
+	// --site-width: #{getCol($desktopCols, $desktopCols, -2, 2)};
+	// --site-width: min(#{getCol($desktopCols, $desktopCols, 0, 0, #{$desktopMargin * 2})}, 1440px);
+	--site-width: min(#{getCol($desktopCols, $desktopCols, 0, 0, #{$desktopMargin * 2})}, 1602px);
+
+	@include breakpoint(small) {
+		--site-width: calc(100% - #{$mobilePadding * 2}) !important;
+		--topbar-height: 62px;
+
+		--text-md: 13px;
+		--text-lg: 15px;
+		--text-button: 12px;
+
+		--lineheight-headline-lg: 30px;
+		--lineheight-headline-md: 25px;
+		--lineheight-headline-sm: 20px;
+		--lineheight-paragraph: 19px;
+		--lineheight-label: 23px;
+		--lineheight-breadcrumb: 13px;
+
+		--headline-lg: 25px;
+		--headline-md: 25px;
+		--headline-sm: 20px;
+	}
+}

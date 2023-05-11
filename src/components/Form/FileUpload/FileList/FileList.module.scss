@@ -1,0 +1,56 @@
+@import 'styles/shared.scss';
+
+.FileList {
+	&Result {
+		position: relative;
+		margin-top: 51px;
+
+		span {
+			line-height: 1;
+		}
+
+		&Bar {
+			height: 7px;
+			margin-top: 11px;
+			background-color: $grey-90;
+
+			&Progress {
+				height: 100%;
+				width: 100%;
+				background-color: $black;
+			}
+		}
+
+		&Item {
+			display: flex;
+			flex-direction: column;
+			justify-content: space-between;
+			position: relative;
+			width: calc(100% - 48px);
+			height: 40px;
+			margin-top: 20px;
+
+			&Progress {
+				display: flex;
+				justify-content: space-between;
+			}
+
+			button {
+				width: 23px;
+				height: 23px;
+				border: 1px solid $black;
+				border-radius: 36px;
+				display: grid;
+				place-content: center;
+				position: absolute;
+				top: 20px;
+				right: -42px;
+
+				svg {
+					width: 8px;
+					height: 8px;
+				}
+			}
+		}
+	}
+}

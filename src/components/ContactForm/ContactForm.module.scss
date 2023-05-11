@@ -1,0 +1,59 @@
+@import "styles/shared.scss";
+.contactForm {
+  border: 1px solid black;
+  border-radius: 0px;
+  width: 50%;
+  margin-top: 10%;
+
+  @include breakpoint(tiny) {
+    border: 1px solid black;
+    border-radius: 0px;
+    width: 95%;
+    margin-top: 21%;
+  }
+}
+.EnterEmail {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5em 2.25em;
+
+  .item {
+    display: flex;
+    flex-direction: column;
+    margin: 0.8em 0;
+    width: 100%;
+    min-width: 20em;
+
+    label {
+      font-weight: var(--fontWeight-bd);
+      text-transform: uppercase;
+      margin-bottom: 0.65em;
+    }
+
+    input {
+      all: unset;
+      background-color: $grey-95;
+      border: 1px solid $black;
+      padding: 0.65em 1em;
+
+      &[data-error="true"] {
+        border-color: red;
+      }
+
+      &:focus {
+        border-color: $primary;
+      }
+    }
+  }
+  textarea {
+    height: 15%;
+  }
+  [data-component="Button"] {
+    align-self: center;
+    width: 100%;
+    min-width: 20em;
+    margin: 1.8em 0;
+  }
+}

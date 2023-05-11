@@ -1,0 +1,55 @@
+@import 'styles/_tokens.scss';
+
+@function colors($base, $shade: strong) {
+  @return map-get(map-get($colors, $base), $shade);
+}
+
+@function textTheme($shade: strong) {
+  @return map-get(map-get($colors, "base"), $shade);
+}
+
+@function space($size) {
+  @return map-get($spacing, $size);
+}
+
+@function weight($weight) {
+  @return map-get($fontWeights, $weight);
+}
+
+@function calc-interpolation($min-screen, $min-value, $max-screen, $max-value) {
+  $a: ($max-value - $min-value) / ($max-screen - $min-screen);
+  $b: $min-value - $a * $min-screen;
+
+  $sign: "+";
+  @if ($b < 0) {
+    $sign: "-";
+    $b: abs($b);
+  }
+  @return calc(#{$a * 100}vw #{$sign} #{$b});
+}
+
+@function capitalize($string) {
+  @return to-upper-case(str-slice($string, 1, 1)) + str-slice($string, 2);
+}
+
+
+// $colCount = the amount of cols you want
+// $containerCols = the amount of cols the container takes up
+// $innerPads = how many column paddings you want
+// $outerPads = how many paddings the container has
+// $outerMargin = used for --site-width, any margin the container may have
+@function getCol($colCount, $containerCols: $desktopCols, $innerPads: 0, $outerPads: 0, $outerMargin: 0px) {
+  @return calc(((((100% - #{$outerMargin}) - #{$desktopPadding * ($outerPads - 1)}) / #{$containerCols}) * #{$colCount}) + #{$desktopPadding * ($outerPads - 1)} + #{$desktopPadding * $innerPads});
+}
+
+@function getGlobalCol($colCount, $outerMargin: #{$desktopMargin * 2}) {
+  @return calc(((((100vw - #{$outerMargin}) + #{$desktopPadding}) / #{$desktopCols}) * #{$colCount}) - #{$desktopPadding});
+}
+
+@function getMobileCol($colCount, $containerCols: $mobileCols, $innerPads: 0, $outerPads: 0, $outerMargin: 0px) {
+  @return calc(((((100% - #{$outerMargin}) - #{$mobilePadding * ($outerPads - 1)}) / #{$containerCols}) * #{$colCount}) + #{$mobilePadding * ($outerPads - 1)} + #{$mobilePadding * $innerPads});
+}
+
+@function getGlobalMobileCol($colCount) {
+  @return calc(((((100vw - #{$mobilePadding * 2}) + #{$mobilePadding}) / #{$mobileCols}) * #{$colCount}) - #{$mobilePadding});
+}

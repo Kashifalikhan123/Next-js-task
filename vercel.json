@@ -1,0 +1,10 @@
+{
+    "trailingSlash": false,
+    "alias": {
+      "web.vercel.app": {
+        "destination": "web.vercel.app"
+      }
+    }
+  }
+  
+

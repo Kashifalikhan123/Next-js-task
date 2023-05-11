@@ -1,0 +1,188 @@
+@import 'styles/_tokens.scss';
+
+@mixin interpolate(
+	$properties,
+	$min-value,
+	$max-value,
+	$min-screen: 320px,
+	$max-screen: $maxWidth
+) {
+	& {
+		@each $property in $properties {
+			#{$property}: $min-value;
+		}
+
+		@media screen and (min-width: $min-screen) {
+			@each $property in $properties {
+				#{$property}: calc-interpolation($min-screen, $min-value, $max-screen, $max-value);
+			}
+		}
+
+		@media screen and (min-width: $max-screen) {
+			@each $property in $properties {
+				#{$property}: $max-value;
+			}
+		}
+	}
+}
+
+@mixin theme($color) {
+}
+
+@mixin font-smoothing {
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+@mixin background-colors {
+	&.Green {
+		background-color: colors('subtle', 'green');
+	}
+
+	&.Yellow {
+		background-color: colors('subtle', 'yellow');
+	}
+
+	&.Blue {
+		background-color: colors('subtle', 'blue');
+	}
+
+	&.Grey {
+		background-color: colors('base', 'lightGrey');
+	}
+}
+
+@mixin aspect-ratio-fix($width, $height) {
+	padding-top: $height / $width * 100%;
+	position: relative;
+	height: 0;
+}
+
+@mixin absolute {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	width: 100%;
+	height: 100%;
+}
+
+@mixin placeholder {
+	&::-webkit-input-placeholder {
+		@content;
+	}
+	&:-moz-placeholder {
+		@content;
+	}
+	&::-moz-placeholder {
+		@content;
+	}
+	&:-ms-input-placeholder {
+		@content;
+	}
+}
+
+@mixin weight($key) {
+	@if map-get($fontWeights, $key) {
+		font-weight: map-get($fontWeights, $key);
+	}
+}
+
+@mixin breakpoint($key) {
+	@if map-get($breakpoints, $key) {
+		@media all and (max-width: map-get($breakpoints, $key)) {
+			@content;
+		}
+	} @else {
+		@content;
+	}
+}
+
+@mixin between($key, $key2) {
+	@if map-get($breakpoints, $key) {
+		@media all and (min-width: map-get($breakpoints, $key)) and (max-width: map-get($breakpoints, $key2)) {
+			@content;
+		}
+	} @else {
+		@content;
+	}
+}
+
+@mixin scrollbar($background, $showLine: false) {
+	&::-webkit-scrollbar {
+		width: 16px;
+	}
+	&::-webkit-scrollbar-track {
+		@if $showLine {
+			background-color: scale-color($background, $lightness: -8%);
+		} @else {
+			background-color: $background;
+		}
+		border-radius: 20px;
+		border: 5px solid $background;
+	}
+	&::-webkit-scrollbar-thumb {
+		background-color: scale-color($background, $lightness: -25%);
+		border-radius: 20px;
+		border: 5px solid $background;
+	}
+
+	&:hover {
+		&::-webkit-scrollbar-track {
+			background-color: scale-color($background, $lightness: -8%);
+		}
+
+		&::-webkit-scrollbar-thumb {
+			background-color: scale-color($background, $lightness: -42%);
+		}
+	}
+}
+
+@mixin landscape($end, $height, $width: 100%, $point: center, $type: 1, $type2: $type) {
+	@if $end == bottom or $end == top {
+		mask: url('/images/landscapes/type-#{$type}_#{$end}.svg') no-repeat,
+			linear-gradient(
+					to #{$end},
+					black calc(100% - #{$height}),
+					transparent calc(100% - #{$height} + 0.2rem)
+				)
+				no-repeat;
+		mask-position: #{$point} #{$end}, center center;
+		mask-size: calc(#{$width} + 2%) #{$height}, cover;
+	} @else if $end == both {
+		mask: url('/images/landscapes/type-#{$type2}_bottom.svg') no-repeat,
+			url('/images/landscapes/type-#{$type}_top.svg') no-repeat,
+			linear-gradient(
+					to top,
+					transparent calc(#{$height} - 0.2rem),
+					black #{$height},
+					black calc(100% - #{$height}),
+					transparent calc(100% - #{$height} + 0.2rem)
+				)
+				no-repeat;
+		mask-position: #{$point} bottom, #{$point} top, center center;
+		mask-size: calc(#{$width} + 2%) #{$height}, calc(#{$width} + 2%) #{$height}, cover;
+	}
+}
+
+@mixin altLink() {
+	&::before {
+		width: 0%;
+	}
+
+	&:hover::before,
+	&:focus::before {
+		width: 100%;
+	}
+}
+
+@mixin fontSize($size, $height: true, $spacing: true) {
+	font-size: $size;
+	@if $height {
+		line-height: 1.4em;
+	}
+	@if $spacing {
+		letter-spacing: 0.007em;
+	}
+}

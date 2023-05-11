@@ -1,0 +1,48 @@
+@import "styles/shared.scss";
+
+.HeadlineAndText {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+
+  [data-component="Button"] {
+    align-self: center;
+  }
+
+  .text {
+    max-width: getCol(4.2, $desktopCols);
+    margin: 1.3em 0 2.1em 0;
+    position: relative;
+    z-index: 2;
+    font-weight: var(--fontWeight-bk);
+    letter-spacing: -0.01px;
+    line-height: 1.51;
+    white-space: pre-line;
+
+    @include breakpoint(small) {
+      margin: 1.57em calc(#{$mobilePadding} * 1.5);
+      @include fontSize(var(--text-md));
+    }
+  }
+
+  @include breakpoint(small) {
+    .text {
+      max-width: 100%;
+      padding: 0 $desktopPadding;
+    }
+  }
+
+  @include breakpoint(tiny) {
+    .text {
+      padding: 0 $mobilePadding;
+    }
+  }
+}
+.left {
+  text-align: left;
+}
+.center {
+  text-align: center;
+}

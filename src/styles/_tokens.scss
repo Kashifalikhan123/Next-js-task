@@ -1,0 +1,69 @@
+// $colors: (
+//   'base': (
+//     'white': #fff,
+//     'grey': #838383,
+//     'mediumGrey': #d8d8d8,
+//     'lightGrey': #f7f8fa,
+//     'verylightGrey': #fafafa,
+//     'brown': #a1957c,
+//     'black': #000
+//   ),
+//   'text': (
+//     'grey': #4f5460,
+//     'lightGrey': #9faac2
+//   ),
+//   'strong': (
+//     'blue': #346fe6,
+//     'green': #2fac8d
+//   ),
+//   'subtle': (
+//     'yellow': #fff0cf,
+//     'green': #d3f2e6,
+//     'blue': #d1eafe
+//   ),
+//   'dark': (
+//     'blue': #002b6b,
+//     'green': #0f3d24
+//   ),
+//   'border': (
+//     'grey': #efefef
+//   )
+// );
+
+// $spacing: (
+//   4: 4px,
+//   8: 8px,
+//   16: 16px,
+//   24: 24px,
+//   36: 36px,
+//   48: 48px,
+//   64: 64px,
+//   72: 72px,
+//   96: 96px,
+//   120: 120px
+// );
+
+$fontWeights: (
+	rg: 400,
+	md: 500,
+	bd: 700,
+);
+
+$breakpoints: (
+	tiny: 740px,
+	small: 960px,
+	medium: 1200px,
+	large: 1500px,
+	verylarge: 1700px,
+);
+
+$desktopCols: 12;
+$desktopPadding: 1vw;
+// $desktopMargin: 15vw;
+$desktopMargin: 12.5vw;
+// If that doesn't measure up to your modules, maybe let's use it as
+// native css variable? because this is the real margin according to the
+// design
+
+$mobileCols: 8;
+$mobilePadding: 21px;

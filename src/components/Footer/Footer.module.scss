@@ -1,0 +1,327 @@
+@import "styles/shared.scss";
+
+.spacer {
+  margin-top: 120px;
+
+  @include breakpoint(small) {
+    margin-top: 60px;
+  }
+}
+
+.Footer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+
+  [data-component="Headline"] {
+    @include fontSize(4em);
+  }
+
+  .flag {
+    width: 23px !important;
+    height: 23px !important;
+    object-fit: contain;
+  }
+
+  &.hasImage {
+    $landscape: 3.5vw;
+    margin-top: #{$landscape * -1};
+    @include landscape(top, $landscape, 100%, center, 3);
+
+    @include breakpoint(small) {
+      [data-component="JoinAction"] {
+        padding: 4.5em 0;
+
+        svg {
+          margin-bottom: 1.5em;
+        }
+      }
+    }
+  }
+
+  .footWrap {
+    display: grid;
+    grid-template-columns: 1fr calc(
+        #{getCol(3, $desktopCols, 0, 0, #{$desktopMargin * 2})} + #{$desktopMargin}
+      );
+    grid-template-rows: max-content;
+    grid-template-areas:
+      "header header"
+      "tree newsletterTop"
+      "communities newsletterBot"
+      "rights rights";
+    border-top: 1px solid $grey-85;
+    --outer-padding: calc(#{$desktopPadding * 1.1} + var(--topbar-height));
+    --vertical-padding: #{$desktopPadding * 5.1};
+
+    .title {
+      font-weight: var(--fontWeight-bd);
+      text-transform: uppercase;
+      margin-bottom: 2vmin;
+      @include fontSize(var(--text-md));
+    }
+
+    .top {
+      grid-area: header;
+      height: 8em;
+      border-right: 1px solid $grey-85;
+      display: flex;
+      align-items: center;
+      justify-content: stretch;
+      border-bottom: 1px solid $grey-85;
+      margin-left: 3.5%;
+      svg {
+        cursor: pointer;
+        height: 100%;
+        padding: calc(var(--topbar-height) * 0.4) 0;
+        box-sizing: initial;
+      }
+    }
+
+    .tree,
+    .communities {
+      border-right: 1px solid $grey-85;
+    }
+
+    .tree {
+      grid-area: tree;
+      padding: calc(var(--vertical-padding) + 1.1em) var(--outer-padding)
+        calc(var(--vertical-padding) + 1.4em);
+      display: grid;
+      grid-template-rows: max-content;
+      grid-template-columns: repeat(
+        auto-fit,
+        minmax(var(--outer-padding), 1fr)
+      );
+      border-bottom: 1px solid $grey-85;
+
+      @include breakpoint(small) {
+        grid-gap: $desktopPadding;
+      }
+
+      .list {
+        display: flex;
+        align-items: flex-start;
+        flex-direction: column;
+
+        a {
+          margin: 0.45em 0;
+          cursor: pointer;
+
+          @include altLink();
+        }
+      }
+    }
+
+    .communities {
+      grid-area: communities;
+      padding: var(--vertical-padding) var(--outer-padding);
+      display: grid;
+      grid-template-columns: repeat(auto-fill, 1.5em);
+      grid-auto-rows: max-content;
+      grid-gap: 1.2em 1em;
+      align-items: center;
+
+      .communityText {
+        grid-column: 1 / -1;
+        text-transform: uppercase;
+        font-weight: var(--fontWeight-bd);
+      }
+
+      a {
+        @include altLink();
+      }
+    }
+
+    .newsletter {
+      background-color: $grey-95;
+      padding: var(--vertical-padding) 4.16667vw;
+
+      @include breakpoint(verylarge) {
+        padding: var(--vertical-padding) getGlobalCol(0.5);
+      }
+
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+
+      label {
+        cursor: default;
+      }
+
+      &.t {
+        grid-area: newsletterTop;
+        padding-bottom: 0;
+      }
+
+      &.b {
+        grid-area: newsletterBot;
+        padding-top: 2em;
+      }
+
+      input {
+        background: none;
+        border: none;
+        border-radius: 0;
+        padding: 1em 0.5em;
+        border-bottom: 1px solid #000;
+        margin-top: 4vmin;
+      }
+
+      .text {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .privacy {
+        max-width: 50%;
+        @include fontSize(0.8em);
+        margin-top: 4vmin;
+      }
+    }
+
+    .rights {
+      grid-column: 1 / -1;
+      display: flex;
+      padding: 0 var(--outer-padding);
+      height: 7.3333333333333em;
+      align-items: center;
+      border-top: 1px solid $grey-85;
+      padding-bottom: 6px;
+      font-weight: var(--fontWeight-bk);
+
+      div {
+        letter-spacing: -0.1px;
+      }
+
+      .links {
+        display: flex;
+        align-items: center;
+        margin: 0 4.1vw;
+
+        a {
+          margin-right: 1em;
+          letter-spacing: 0;
+        }
+      }
+
+      .credits {
+        margin-left: auto;
+        margin-right: 0.8em;
+      }
+    }
+
+    @include breakpoint(small) {
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      // --outer-padding: calc(#{$desktopPadding * 1.74} + var(--topbar-height));
+      --outer-padding: #{getCol(1, $desktopCols, 2, 0, #{$desktopPadding * 2})};
+    
+      .top {
+        border-right: 0;
+
+        svg {
+          width: 100%;
+          height: 100%;
+          padding: calc(var(--topbar-height) * 0.65) 0;
+        }
+      }
+
+      .tree,
+      .communities {
+        border-right: 0;
+      }
+
+      .newsletter {
+        .privacy {
+          max-width: 100%;
+        }
+      }
+      
+    }
+    // @include breakpoint(max-width(570px)) {
+    //   a {
+    //     margin-right: 1em;
+    //     font-size: 11px;
+     
+    //   }
+     
+    // }
+
+
+    @include breakpoint(tiny) {
+      --vertical-padding: #{$mobilePadding * 2.5};
+      --outer-padding: #{$mobilePadding};
+      a {
+        margin-right: 1em;
+        font-size: 11px;
+     
+      }
+      .top {
+        padding: 0 $mobilePadding;
+      }
+
+      .top {
+        padding: 0 $mobilePadding;
+      }
+
+      .tree,
+      .communities {
+        border-right: 0;
+      }
+
+      .tree {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+
+        .list {
+          flex-direction: row;
+          flex-wrap: wrap;
+          margin: 1em 5em 1em 0;
+
+          .title {
+            width: 100%;
+            margin-bottom: 0.5em;
+          }
+
+          a {
+            margin-right: $mobilePadding;
+          }
+        }
+      }
+
+      .newsletter {
+        text-align: center;
+        padding: var(--vertical-padding)
+          getMobileCol(1, $mobileCols, 1, 0, #{$mobilePadding * 2});
+
+        .text {
+          align-items: stretch;
+        }
+
+        [data-component="Button"] {
+          align-self: center;
+        }
+
+        input {
+          text-align: center;
+        }
+      }
+
+      .rights {
+        height: auto;
+        padding: 1.2em var(--outer-padding);
+        flex-direction: column;
+        align-items: center;
+        line-height: 2.2em;
+
+        .credits {
+          margin: 0;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,102 @@
+@import 'styles/shared.scss';
+
+.ModalManager {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  min-height: 100vh;
+  background-color: rgba(0,0,0,.5);
+  // backdrop-filter: blur(2px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 20;
+  padding: 2vh 4vw;
+  
+  &Hide {
+    opacity: 0;
+    display: none;
+    pointer-events: none;
+  }
+
+  .modal {
+    width: 38em;
+    min-height: 8em;
+    max-height: 100%;
+    background-color: $white;
+    border: 1px solid $black;
+    --padw: 2.9rem;
+    --padh: 2.1rem;
+    --pad: var(--padh) var(--padw);
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+
+    &:not(:nth-last-child(1)) {
+      display: none;
+    }
+    
+    .title {
+      background-color: $grey-95;
+      border-bottom: 1px solid $black;
+      font-weight: var(--fontWeight-bd);
+      text-transform: uppercase;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      @include fontSize(1.1em);
+      line-height: 1.2em;
+      
+      &Inner {
+        padding: var(--pad);
+        flex-grow: 1;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      
+      .close {
+        padding: calc(var(--padw) * .25);
+        margin: 0 calc(var(--padw) * .75);
+        border-radius: .2em;
+        cursor: pointer;
+
+        &:hover, &:focus {
+          background-color: $grey-90;
+        }
+
+        svg {
+          height: 1.2em;
+          width: 1.2em;
+        }
+      }
+    }
+
+    .body {
+      padding: var(--pad);
+      overflow-y: auto;
+    }
+
+    hr {
+      align-self: center;
+      border: 0;
+      margin: 0 0;
+      width: calc(100% - (var(--padw) * 2));
+      height: 1px;
+      background-color: $grey-85;
+    }
+
+    .actions {
+      padding: var(--pad);
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+
+     [data-component="Button"] {
+       margin: 0 .5em;
+     }
+    }
+  }
+}

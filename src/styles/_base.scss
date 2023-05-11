@@ -1,0 +1,173 @@
+::selection {
+  background-color: colors(base, dark);
+  color: colors(base, light);
+}
+
+::placeholder {
+  color: textTheme('grey');
+}
+
+// Gets rid of the outline for mouse users but preserves it for keyboard users.
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+html,
+body {
+  min-height: 100vh;
+  min-height: -webkit-fill-available;
+}
+
+html {
+  background-color: #fff;
+  box-sizing: border-box;
+  color: colors(base, dark);
+  font-family: 'CeraPro-Regular', sans-serif;
+  font-style: normal;
+  font-weight: weight(rg);
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 0;
+}
+
+[tabindex],
+a,
+button,
+input,
+label,
+select,
+textarea {
+  -ms-touch-action: manipulation;
+  touch-action: manipulation;
+}
+
+a {
+  color: currentColor;
+  outline: none;
+  text-decoration: none;
+  text-decoration-skip-ink: auto;
+}
+
+a * {
+  pointer-events: none;
+}
+
+svg {
+  fill: currentColor;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  font-size: 100%;
+  font-weight: weight(rg);
+  line-height: inherit;
+  margin: 0;
+}
+
+ol,
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+dl {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+dd {
+  margin-left: 0;
+}
+
+img {
+  display: inline-flex;
+  max-width: 100%;
+  height: auto;
+}
+
+blockquote,
+figure {
+  margin: 0;
+}
+
+cite {
+  font-style: normal;
+}
+
+button,
+input,
+select,
+textarea {
+  font-family: inherit;
+  font-size: 100%;
+  font-weight: inherit;
+  line-height: 1.15;
+  margin: 0;
+}
+
+button,
+input[type='reset'] {
+  background-color: transparent;
+  border: none;
+  color: currentColor;
+  cursor: pointer;
+  padding: 0;
+  outline: none;
+  user-select: none;
+}
+
+button {
+  cursor: pointer;
+}
+
+button[disabled] {
+  cursor: default;
+}
+
+a *,
+button * {
+  pointer-events: none;
+}
+
+input[type='search']::-webkit-search-decoration,
+input[type='search']::-webkit-search-cancel-button,
+input[type='search']::-webkit-search-results-button,
+input[type='search']::-webkit-search-results-decoration {
+  -webkit-appearance: none;
+}
+
+input[type='search'] {
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+fieldset {
+  border: none;
+  margin: 0;
+  padding: 0;
+}
+
+legend {
+  margin: 0;
+  padding: 0;
+}
+
+label {
+  cursor: pointer;
+}

@@ -1,0 +1,285 @@
+@import 'styles/shared.scss';
+@import 'styles/_variables.scss';
+
+@font-face {
+	font-family: 'Pilat';
+	font-weight: 300;
+	src: url('/fonts/Pilat-Regular.woff2') format('woff2');
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'Pilat';
+	font-weight: 400;
+	src: url('/fonts/Pilat-Book.woff2') format('woff2');
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'Pilat';
+	font-weight: 600;
+	src: url('/fonts/Pilat-Bold.woff2') format('woff2');
+	font-display: swap;
+}
+
+:focus:not(:focus-visible) {
+	outline: none;
+}
+
+*,
+*::before,
+*::after {
+	box-sizing: inherit;
+}
+
+html,
+body,
+#__next {
+	// height: 100%;
+	min-height: 100vh;
+	// better font rendering
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	-webkit-text-size-adjust: none;
+}
+
+html {
+	background-color: $white;
+	box-sizing: border-box;
+	color: $black;
+	font-family: 'Pilat', sans-serif;
+	font-style: normal;
+	font-weight: var(--fontWeight-rg);
+	@include fontSize(15px);
+	letter-spacing: 0.1px;
+	line-height: 1.4em;
+	width: 100%;
+}
+
+body {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	margin: 0;
+	position: relative;
+	overflow-x: hidden;
+	overflow-y: scroll;
+
+	&.grid::after {
+		content: '';
+		display: inline-block;
+		position: fixed;
+		top: 0;
+		left: 0;
+		height: 100vh;
+		// width: 100%;
+		width: calc(100% - #{$desktopMargin * 2});
+		margin: 0 #{$desktopMargin};
+		pointer-events: none;
+		$w: calc((100% + #{$desktopPadding}) / #{$desktopCols});
+		background: repeating-linear-gradient(
+			90deg,
+			#f00,
+			#f00 calc(#{$w} - #{$desktopPadding}),
+			transparent calc(#{$w} - #{$desktopPadding}),
+			transparent #{$w}
+		);
+		opacity: 0.15;
+		z-index: 100;
+
+		@include breakpoint(small) {
+			margin: 0;
+			width: calc(100% - #{$mobilePadding * 2});
+			transform: translateX(-50%);
+			left: 50%;
+			background: repeating-linear-gradient(
+				90deg,
+				transparent,
+				transparent $desktopPadding,
+				#f00 $desktopPadding,
+				#f00 calc((100% - #{$desktopPadding}) / #{$desktopCols})
+			);
+		}
+
+		@include breakpoint(tiny) {
+			margin: 0;
+			width: 100%;
+			background: repeating-linear-gradient(
+				90deg,
+				transparent,
+				transparent $mobilePadding,
+				#f00 $mobilePadding,
+				#f00 calc((100% - #{$mobilePadding}) / #{$mobileCols})
+			);
+		}
+	}
+}
+
+[tabindex],
+a,
+button,
+input,
+label,
+select,
+textarea {
+	-ms-touch-action: manipulation;
+	touch-action: manipulation;
+}
+
+a {
+	position: relative;
+	color: currentColor;
+	outline: none;
+	text-decoration: none;
+	text-decoration-skip-ink: auto;
+
+	&::before {
+		display: inline-block;
+		position: absolute;
+		background-color: $primary;
+		bottom: -1px;
+		height: 2px;
+		width: 100%;
+		left: 50%;
+		transform: translateX(-50%);
+		content: '';
+		transition: width 0.2s;
+	}
+
+	&:hover::before,
+	&:focus::before {
+		width: 70%;
+	}
+
+	span {
+		position: relative;
+		display: inline-flex;
+		width: auto;
+	}
+}
+
+a * {
+	pointer-events: none;
+}
+
+svg {
+	fill: currentColor;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+	font-size: 100%;
+	font-weight: var(--fontWeight-rg);
+	line-height: inherit;
+	margin: 0;
+}
+
+ol,
+ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+ol {
+	list-style: decimal;
+}
+
+dl {
+	margin-top: 0;
+	margin-bottom: 0;
+}
+
+dd {
+	margin-left: 0;
+}
+
+img {
+	display: inline-flex;
+	max-width: 100%;
+	height: auto;
+}
+
+blockquote,
+figure {
+	margin: 0;
+}
+
+cite {
+	font-style: normal;
+}
+
+button,
+input,
+select,
+textarea {
+	font-family: inherit;
+	font-size: 100%;
+	font-weight: inherit;
+	line-height: 1.15;
+	margin: 0;
+}
+
+button,
+input[type='reset'] {
+	background-color: transparent;
+	border: none;
+	color: currentColor;
+	cursor: pointer;
+	padding: 0;
+	outline: none;
+	user-select: none;
+}
+
+button {
+	cursor: pointer;
+}
+
+button[disabled] {
+	cursor: default;
+}
+
+a *,
+button * {
+	pointer-events: none;
+}
+
+input[type='search']::-webkit-search-decoration,
+input[type='search']::-webkit-search-cancel-button,
+input[type='search']::-webkit-search-results-button,
+input[type='search']::-webkit-search-results-decoration {
+	-webkit-appearance: none;
+}
+
+input[type='search'] {
+	-webkit-appearance: none;
+	appearance: none;
+}
+
+form {
+	width: 100%;
+}
+
+fieldset {
+	border: none;
+	margin: 0;
+	padding: 0;
+}
+
+legend {
+	margin: 0;
+	padding: 0;
+}
+
+label {
+	cursor: pointer;
+}
+
+.react-tiny-popover-container {
+	z-index: 4;
+}

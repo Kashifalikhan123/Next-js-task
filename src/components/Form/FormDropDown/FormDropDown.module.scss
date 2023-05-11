@@ -1,0 +1,90 @@
+@import 'styles/shared.scss';
+
+.select {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	all: unset;
+	box-sizing: content-box;
+	background-color: #f2f2f2;
+	border: 1px solid $black;
+	@include fontSize(var(--text-md));
+	// overflow: hidden;
+
+	&:focus-within {
+		border-color: $primary;
+	}
+
+	&Button {
+		all: unset;
+		box-sizing: border-box;
+		cursor: pointer;
+		width: 100%;
+		// z-index: 1;
+		display: flex;
+		align-items: center;
+		justify-content: flex-start;
+
+		svg {
+			width: 0.9em;
+			margin-left: auto;
+		}
+
+		&.expanded {
+			svg {
+				transform: rotate(180deg);
+			}
+		}
+
+		&:focus {
+			color: inherit !important;
+		}
+	}
+
+	&Options {
+		position: relative;
+		display: flex;
+		width: 100%;
+		height: 100%;
+		z-index: 1;
+
+		&Container {
+			position: absolute;
+			width: calc(100% + 2px);
+			top: 0;
+			left: -1px;
+			overflow: hidden;
+			// z-index: 0;
+		}
+
+		&Wrapper {
+			border: 1px solid $black;
+			display: flex;
+			flex-direction: column;
+			width: 100%;
+			width: 100%;
+			transform: translateY(-100%);
+			transition: transform 0.2s ease-in-out;
+		}
+
+		&Item {
+			// display: grid;
+			// align-content: center;
+			padding: 10px 20px 12px 20px;
+			background-color: #f2f2f2;
+			cursor: pointer;
+
+			&Selected {
+				background-color: $primary;
+			}
+
+			&:hover {
+				background-color: $grey-90;
+			}
+
+			&:focus {
+				color: $primary;
+			}
+		}
+	}
+}

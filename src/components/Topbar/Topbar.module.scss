@@ -1,0 +1,286 @@
+@import "styles/shared.scss";
+
+.topbar {
+  --border: #333;
+  --border: #{$grey-85};
+  display: flex;
+  height: var(--topbar-height);
+  width: 100%;
+  border-bottom: 1px solid #{$grey-85};
+  position: fixed;
+  z-index: 10;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.65), transparent);
+  background: #fff;
+  transition: transform 0.3s;
+
+  a {
+    &::before {
+      all: unset;
+    }
+  }
+
+  &.up {
+    transform: translateY(calc(-100% - 38px));
+
+    @include breakpoint(small) {
+      transform: translateY(-100%);
+    }
+  }
+
+  .logo {
+    display: flex;
+    height: 90%;
+    width: getCol(1.85, 20);
+    border-right: 1px solid #{$grey-85};
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+
+    svg {
+      display: block;
+      height: 100%;
+      width: 100%;
+      margin-top: 4%;
+
+      path {
+        fill: $primary;
+      }
+    }
+
+    @include breakpoint(large) {
+      display: none;
+    }
+  }
+
+  .companyName {
+    display: flex;
+    align-items: center;
+    justify-content: stretch;
+    flex-grow: 1;
+
+    a {
+      height: 100%;
+      display: flex;
+      align-items: center;
+    }
+  }
+
+  .menu {
+    display: flex;
+    align-items: stretch;
+    @include fontSize(13px);
+    // padding: 0 18px;
+    padding: 0 36px;
+
+    .menuInner {
+      display: flex;
+      align-items: stretch;
+    }
+
+    .divider {
+      height: 100%;
+      width: 1px;
+      background-color: var(--border);
+      margin: 0 15px;
+    }
+
+    .actions {
+      align-self: center;
+      display: flex;
+      align-items: center;
+      padding-left: var(--space-rg);
+
+      a {
+        margin-right: var(--space-rg);
+
+        &:not(:nth-child(1)) {
+          margin-right: 0;
+        }
+      }
+    }
+
+    .sidekick {
+      display: none;
+    }
+  }
+
+  .mobileJoinBtn {
+    position: absolute;
+    display: none;
+
+    top: calc(var(--topbar-height) * 0.3);
+    right: calc(var(--topbar-height) * 1.11);
+
+    @include breakpoint(small) {
+      display: block;
+    }
+
+    [data-component="Button"] {
+      height: 24px;
+      padding: 0 15px 0 13px;
+    }
+  }
+
+  .hamburger,
+  .close {
+    display: none;
+    width: var(--topbar-height);
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+
+    svg {
+      width: 25%;
+      height: 25%;
+      @include breakpoint(small) {
+        margin-right: 17px;
+        margin-top: 4px;
+        width: 30%;
+        height: 34%;
+      }
+    }
+  }
+
+  @include breakpoint(small) {
+    height: 62px;
+    $width: #{getMobileCol(4, $mobileCols, 0, 0, #{$mobilePadding * 2})};
+
+    .companyName {
+      padding-left: calc(#{$mobilePadding} - 6px);
+
+      a svg {
+        padding: calc(var(--topbar-height) * 0.4) #{$mobilePadding * 1.74};
+      }
+    }
+
+    .hamburger {
+      display: flex;
+    }
+
+    .menu {
+      position: fixed;
+      top: 0;
+      right: -100%;
+      height: 100vh;
+      width: 100%;
+      background-color: white;
+      color: $black !important;
+      z-index: 10;
+      flex-direction: column;
+      align-items: center;
+      padding: 0;
+      transition: right 0.35s;
+
+      &.open {
+        right: 0;
+      }
+
+      .close {
+        display: flex;
+        position: absolute;
+        top: 0;
+        right: 0;
+        height: var(--topbar-height);
+      }
+
+      .menuInner {
+        flex-direction: column;
+        justify-content: center;
+        align-items: stretch;
+        width: $width;
+        flex-grow: 1;
+
+        .divider {
+          height: 1px;
+          margin: 2em 0;
+          width: 100%;
+        }
+
+        .actions {
+          flex-direction: column;
+          justify-content: center;
+          padding: 0;
+
+          [data-component="Button"]:nth-child(1) {
+            border-color: $black !important;
+            background-color: $white !important;
+
+            div {
+              color: $black !important;
+            }
+          }
+
+          a {
+            margin: 1em 0;
+            align-self: stretch;
+          }
+        }
+      }
+
+      .sidekick {
+        align-self: stretch;
+        flex-grow: 1;
+        flex-shrink: 1;
+        background-color: #f2f2f2;
+        border-top: 1px solid #000;
+        display: grid;
+        grid-template-rows: max-content;
+        grid-template-columns: 5.8em 10em;
+        justify-content: center;
+        align-items: start;
+        align-content: center;
+        grid-gap: 2.5em;
+        padding: $mobilePadding;
+
+        .sidekickImage {
+          display: none;
+          background: $primary;
+          box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+          border-radius: 14px;
+          display: grid;
+          position: relative;
+          padding-bottom: 100%;
+
+          svg {
+            position: absolute;
+            height: 50%;
+            width: 50%;
+            top: 25%;
+            left: 25%;
+
+            path {
+              fill: $black;
+            }
+          }
+        }
+
+        .sidekickBox {
+          display: flex;
+          flex-direction: column;
+
+          .sidekickTitle {
+            font-weight: var(--fontWeight-bd);
+            @include fontSize(var(--label));
+            letter-spacing: 0.75px;
+            text-transform: uppercase;
+            margin-bottom: 1em;
+          }
+          div {
+            letter-spacing: 0.75px;
+            @include fontSize(var(--label));
+          }
+        }
+      }
+    }
+  }
+
+  &.loggedIn {
+    .menu {
+      padding-right: 0;
+
+      .divider {
+        margin-right: 0;
+      }
+    }
+  }
+}
